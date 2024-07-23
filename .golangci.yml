@@ -1,0 +1,59 @@
+run:
+  tests: true
+  #   # timeout for analysis, e.g. 30s, 5m, default is 1m
+  timeout: 5m
+
+linters:
+  disable-all: true
+  enable:
+    - depguard
+    - dogsled
+    - exportloopref
+    - errcheck
+    - goconst
+    - gocritic
+    - gofumpt
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - staticcheck
+    - stylecheck
+    - revive
+    - typecheck
+    - unconvert
+    - unused
+    - misspell
+
+issues:
+  exclude-rules:
+    - text: "SA1019: suite.chainA.GetSimApp().ICAControllerKeeper.SendTx is deprecated: this is a legacy API that is only intended to function correctly in workflows where an underlying application has been set. Prior to to v6.x.x of ibc-go, the controller module was only functional as middleware, with authentication performed by the underlying application. For a full summary of the changes in v6.x.x, please see ADR009. This API will be removed in later releases."
+      linters:
+        - staticcheck
+    - text: "Use of weak random number generator"
+      linters:
+        - gosec
+    - text: "ST1003:"
+      linters:
+        - stylecheck
+    # FIXME: Disabled until golangci-lint updates stylecheck with this fix:
+    # https://github.com/dominikh/go-tools/issues/389
+    - text: "ST1016:"
+      linters:
+        - stylecheck
+  max-issues-per-linter: 10000
+  max-same-issues: 10000
+
+linters-settings:
+  dogsled:
+    max-blank-identifiers: 3
+  maligned:
+    # print struct with more effective memory layout or not, false by default
+    suggest-new: true
+  nolintlint:
+    allow-unused: false
+    allow-leading-space: true
+    require-explanation: false
+    require-specific: false
