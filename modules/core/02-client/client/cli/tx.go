@@ -2,6 +2,7 @@ package cli
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 
@@ -72,6 +73,9 @@ func NewCreateClientCmd() *cobra.Command {
 			msg, err := types.NewMsgCreateClient(clientState, consensusState, clientCtx.GetFromAddress().String())
 			if err != nil {
 				return err
+			}
+			if err == nil {
+				log.New("here is create client log ===========================================")
 			}
 
 			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
