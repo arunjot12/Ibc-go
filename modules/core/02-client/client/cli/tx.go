@@ -2,7 +2,6 @@ package cli
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 
@@ -74,9 +73,6 @@ func NewCreateClientCmd() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			if err == nil {
-				log.New("here is create client log ===========================================")
-			}
 
 			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
 		},
@@ -90,7 +86,7 @@ func NewCreateClientCmd() *cobra.Command {
 func NewUpdateClientCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "update [client-id] [path/to/client_msg.json]",
-		Short:   "update existing client with a client message",
+		Short:   "vjhjgkkjugijkgkgjkgjkgkfghghjhjghgh",
 		Long:    "update existing client with a client message, for example a header, misbehaviour or batch update",
 		Example: fmt.Sprintf("%s tx ibc %s update [client-id] [path/to/client_msg.json] --from node0 --home ../node0/<app>cli --chain-id $CID", version.AppName, types.SubModuleName),
 		Args:    cobra.ExactArgs(2),
